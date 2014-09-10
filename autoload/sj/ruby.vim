@@ -678,6 +678,8 @@ function! s:JoinLines(text)
 endfunction
 
 function! s:HandleComments(start_line_no, end_line_no)
+  echomsg "s:HandleComments"
+
   let start_line_no = a:start_line_no
   let end_line_no   = a:end_line_no
 
@@ -685,6 +687,7 @@ function! s:HandleComments(start_line_no, end_line_no)
   let offset = 0
 
   let comments = s:FindComments(start_line_no, end_line_no)
+  echomsg string(comments)
 
   if len(comments) > 1
     echomsg "Splitjoin: Can't join this due to the inline comments. Please remove them first."
@@ -702,6 +705,8 @@ function! s:HandleComments(start_line_no, end_line_no)
 endfunction
 
 function! s:FindComments(start_line_no, end_line_no)
+  echomsg "s:FindComments"
+
   call sj#PushCursor()
 
   let comments = []
@@ -728,6 +733,7 @@ function! s:FindComments(start_line_no, end_line_no)
 endfunction
 
 function! s:MigrateComments(comments, start_line_no, end_line_no)
+  echomsg "s:MigrateComments"
   call sj#PushCursor()
 
   let start_line_no = a:start_line_no
